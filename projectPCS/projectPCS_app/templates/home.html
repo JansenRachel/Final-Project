@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPCS Assist Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- MAKE NOT A LINK -->
+            <a class="navbar-brand" href="#">MyPCS Assist</a>
+            <!--  -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/toDo_list">My To-do List</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- TRYING PASS URER_ID THROUGH URL TO FIX MISS 1 REQ POSIT ARGU ERROR -->
+                        <a class="nav-link" href="/messages">Message Board</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        MyAccount
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/myaccount_documents">Upload/View Documents</a>
+                            <a class="dropdown-item" href="/myaccount_editprofile">Edit Profile/PCS Info</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="homeContent">
+            <h1>Welcome {{request.session.firstname}} {{request.session.lastname}}</h1>
+            <p>Let's get started on your move.</p>
+            
+            <!-- <h2>From: {{logged_user.move_info.all}}</h2> -->
+            <h2>From: {{this_user.move_info.orig_address}}, {{this_user.move_info.orig_citybase}} {{this_user.move_info.orig_state}}</h2>
+
+
+            <h3>{ # }} days left until moving day!</h3>
+            <h4>Continue Working on your To-Do list <a href="/toDo_list">HERE</a></h4>
+            <h2>To: {{this_user.move_info.dest_address}}, {{this_user.move_info.dest_citybase}} {{this_user.move_info.dest_state}}</h2>
+        </div>
+        <!-- <div id="homeReminders" style="float: right;">
+            <h4>Upcoming tasks this week.</h4>
+            % for all tasks due this week, list task %
+            <ul>
+                <li>Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li>
+            </ul>
+        </div> -->
+    </div>
+    <!-- BOOTSTRAP/JQUERY/POPPER -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <script>
+    $(function() {
+        if (sessionStorage.getItem('input')) {
+            var checks = JSON.parse(sessionStorage.getItem('input'));
+            $("input[type='checkbox']").prop('checked', function(i) {
+                return checks[i];
+            });
+        }
+    });
+
+/* checkbox -- */
+    $(document).ready(function() {
+        // $("input[type='checkbox']").on('change', function() {
+        //     var id = $(this).val();
+        //     // sessionStorage.setItem('input', JSON.stringify($("input[type='checkbox']").map(function() {
+        //         localStorage.setItem(userId,"CheckBox Value");
+        //         return this.checked;
+        //     }).get()));
+        //     sessionStorage.setItem('input',
+        //     if ($(this).is(':checked')) {
+        //   //data
+        //     } else {
+        //   //error
+        //     })
+        //     });
+        // });
+    $(".form-check-input me-1").on('click', function(){
+
+        if(localStorage.getItem("checkedbox") == 'true') {
+            $(this).prop(checked, 'false');
+            localStorage.setItem("checkedbox", 'false');
+
+        }
+        else {
+            $(this).prop(checked, 'true');
+            localStorage.setItem("checkedbox", 'true');
+        }
+    
+    })
+    </script> -->
+    <!-- <script>
+        jQuery(document).ready(function($) {
+            $(".table table-striped").contents().find(":checkbox").bind("change", function() { // Find all checkboxes in the div website_checklist on change
+                    val = this.checked, $(this).parent().toggleClass("checked"); // Give this item the class "checked"
+            }), $(".table table-striped").contents().find(":checkbox").bind("focus", function() { // Find all checkboxes in the div website_checklist on bind
+                    val = this.focused, $(".focus").removeClass("focus"), $(this).parent().addClass("focus"); // Remove all focus and then add focus class to this one
+            })
+        });
+        </script> -->
+
+        <script>jQuery(document).ready(function(c){c(document).ready(function(){c(".website_checklist").contents().find(":checkbox").bind("change",function(){val=this.checked,c(this).parent().toggleClass("checked")}),c(".website_checklist").contents().find(":checkbox").bind("focus",function(){val=this.focused,c(".focus").removeClass("focus"),c(this).parent().addClass("focus")})})});</script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+		// check for cookie on load
+		if(Cookies.get('de_web_checklist_ar') ) {
+				var chk_ar = Cookies.get('de_web_checklist_ar');
+				// convert string to object
+				chk_ar = $.parseJSON(chk_ar);
+				// loop through and apply checks to matching sets
+				$.each(chk_ar, function(index, value) {
+						console.log(value);
+						$('input[name="'+value+'"]').prop('checked', true);
+		$('input[name="'+value+'"]').closest("li").addClass("checked");
+				});
+		}
+// handle checkboxes
+$('.website_checklist input[type="checkbox"').on('click', function() {
+		var check_array = [];
+		// add to array
+		$(':checked').each(function() {
+				check_array.push($(this).attr('name'));
+		});
+		// stringify array object
+		check_array = JSON.stringify(check_array);
+		// set cookie
+		Cookies.set('de_web_checklist_ar', check_array, {path:'/'});
+});
+});
+</script>
+
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">MyPCS Assist</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/toDo_list">My To-do List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/messages">Message Board</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        MyAccount
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/myaccount_documents">Upload/View Documents</a>
+                            <a class="dropdown-item" href="/myaccount_editprofile">Edit Profile/PCS Info</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1>My To-do List</h1>
+        <h2>{#}} Days till Moving day</h2>
+        <!-- trying to persist checkboxes with cookie -->
+        <div class="website_checklist">
+        <!-- <div id="before_move"> -->
+            <div class="checklist_header">
+                <h3>Preparing For Your Move</h3>
+                <h4>3 Months until Moving Day</h4>
+            </div>
+            <ul>
+                <li><input type="checkbox" name="item_0" id="item_0"><label for="item_0">List item 1</label><span class="input"></span></li>
+                <li><input type="checkbox" name="item_1" id="item_1"><label for="item_1">List item 2</label><span class="input"></span></li>
+                <li><input type="checkbox" name="item_2" id="item_2"><label for="item_2">List item 3</label><span class="input"></span></li>
+                <li><input type="checkbox" name="item_3" id="item_3"><label for="item_3">List item 4</label><span class="input"></span></li>
+            </ul>
+            <!-- <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th scope="col">Complete</th> -->
+                        <!-- <th scope="col">Remove This Item</th> -->
+                        <!-- </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Make appointment to schedule and attend PCS outprocessing brief</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value="" ></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Schedule any necessary medical/dental apporintments necessary prior to leaving</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Have Power of Attorney/ Letter of Authorization for any unfreseen circumstances.</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Start to downsize and give away or throw out any items you do not wish to take with you</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                </tbody>
+            </table> -->
+            <!-- checklist persist divs below -->
+        </div>
+            <h4>2 Months until Moving Day</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th scope="col">Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>If buying a new home at your next location, find one asap and start setting up financing and tentative closing dates</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Start looking in to options for childcare or school enrollments at your new location</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Check to be sure no credit cards, ID cards, insurance plans will be expiring during your move</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>1 Month until Moving Day</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th scope="col">Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Schedule HHG pickup and delivery dates with moving company and arrange for nay storage if needed</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Make sure your vehicle(s) get scheduled for any maintenence before traveling or shipping your vehicle</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Document all household items, (take pictures/videos showing WORKING electronics/appliances), and obtain any appraisals for any antique items</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Plan menus from what you have remaining in your freezer and cabinets</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <h4>1 Week until Moving Day</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th scope="col">Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Make copies of any important documents</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Set aside cleaning products and tools to be used after packing and loading</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h4>On Moving Day</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">To-Do</th>
+                        <th scope="col">Complete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Set aside items that will NOT be packed with your HHG such as suitcases, important documents carrying with you, and make sure the movers are aware not to pack these items.</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Double check closets, drawers, shelves, attic, and garage to be sure nothing was missed</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Verify the mover's inventory is detailes, complete, and accurate.</td>
+                        <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Hand carry any finance, medical and dental records, and Officail Military Orders</td>
+                        <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="after_move">
+        <h3>Setteling In</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">To-Do</th>
+                    <th scope="col">Complete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Change Address on all subscriptions, accounts, bank cards, loan companies</td>
+                    <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Contact the destination HHG office to arrange for delivery of personal property</td>
+                    <td><input class="form-check-input me-1" type="checkbox" value=""></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Set up phone, gas and electric, internet and cable services at your new address</td>
+                    <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Register your children in school</td>
+                    <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Make sure all inventory from movers match to the inventory list you obtained before departure</td>
+                    <td colspan="2"><input class="form-check-input me-1" type="checkbox" value=""></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+        // Avoid scoping issues by encapsulating code inside anonymous function
+        (function() {
+          // variable to store our current state
+            var cbstate;
+          // bind to the onload event
+            window.addEventListener('load', function() {
+            // Get the current state from localstorage
+            // State is stored as a JSON string
+            cbstate = JSON.parse(localStorage['CBState'] || '{}');
+            // Loop through state array and restore checked 
+            // state for matching elements
+            for(var i in cbstate) {
+                var el = document.querySelector('input[name="' + i + '"]');
+                if (el) el.checked = true;
+            }
+            // Get all checkboxes that you want to monitor state for
+            var cb = document.getElementsByClassName('save-cb-state');
+            // Loop through results and ...
+            for(var i = 0; i < cb.length; i++) {
+              //bind click event handler
+                cb[i].addEventListener('click', function(evt) {
+                // If checkboxe is checked then save to state
+                if (this.checked) {
+                    cbstate[this.name] = true;
+                }
+            
+            // Else remove from state
+                else if (cbstate[this.name]) {
+                    delete cbstate[this.name];
+                }
+            
+            // Persist state
+                    localStorage.CBState = JSON.stringify(cbstate);
+                });
+                }
+            });
+        })();
+    </script> -->
+                
+                
+</body>
+</html>
