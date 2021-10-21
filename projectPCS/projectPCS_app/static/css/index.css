@@ -8,18 +8,22 @@
 }
 body {
 	background: linear-gradient(90deg, hsl(205deg 25% 91%), rgb(79 79 80));
+	padding: 0% 4% 4% 4%;
 	/* font-family: "Nunito", sans-serif;
 	color: rgba(#000, 0.7);		 */
 }
 #header {
-	max-width: 600px;
-	margin: 0 auto;
-	padding: 40px 0;
+	max-width: 1000px;
+	margin: 2% auto;
+	padding: 10px, 0px;
 	height: auto;
 	text-align: center;
 }
 #content {
-	padding: 10%;
+	/* margin-bottom: 10%; */
+	padding: 0% 10%;
+	height: auto;
+	/* padding: 0, 10% 10%,10%; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -27,14 +31,14 @@ body {
 }
 h1{
 		font-size: 40px;
-		transition-duration: 1s;
-		transition-timing-function: ease-in-put;
-		font-weight: 200;
+		/* transition-duration: 1s; */
+		/* transition-timing-function: ease-in-put; */
+		/* font-weight: 850; */
 		color: #55311c;
 
 	}
 h5 {
-	color: #8c7569;
+	color: #382012;
 }
 h4 {
 	font-size: 26px;
@@ -105,19 +109,24 @@ input {
 	cursor: pointer;
 }
 #Rform-containter {
+	height: 100%;
+	overflow: hidden;
+	margin: 2%,12%,1%,12%;
 	padding: 60px 30px 20px;
 	background: #fff;
 	flex: 1.5;
-	/* transition-duration: 0.5s; */
 	transform: translateY(80px);
-	/* opacity: 0; */
+	/* justify-content: center; */
+	text-align: center;
 }
 #Lform-containter {
-	margin: 20%;
+	height: 100%;
+	overflow: hidden;
+	margin: 12%,1%,12%,2%;
 	padding: 60px 30px 20px;
 	background: hsl(40deg 3% 82%);
 	flex: 1.5;
-	/* transition-duration: 0.5s; */
 	transform: translateY(80px);
-	/* opacity: 0; */
+	/* justify-content: center; */
+	text-align: center;
 	}
